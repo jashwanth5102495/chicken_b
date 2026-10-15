@@ -69,3 +69,22 @@ settingsRouter.put('/', async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+
+// POST /api/settings/reset-data - Wipes all dummy shops, orders, payments, and ledger from PostgreSQL
+settingsRouter.post('/reset-data', async (req, res) => {
+  try {
+    await query(`DELETE FROM order_items`);
+    await query(`DELETE FROM ledger_entries`);
+    await query(`DELETE FROM payments`);
+    await query(`DELETE FROM standing_orders`);
+    await query(`DELETE FROM orders`);
+    await query(`DELETE FROM shops`);
+    return res.json({
+      success: true,
+      message: 'All dummy shops, orders, payments, and ledger entries successfully removed from PostgreSQL.',
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
