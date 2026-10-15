@@ -56,7 +56,7 @@ export const initializeDatabase = async () => {
       // Seed Distributor Settings
       await query(`
         INSERT INTO settings (id, business_name, owner_name, phone, address, cutoff_time, upi_id)
-        VALUES (1, 'Sri Lakshmi Broiler & Poultry Distributors', 'M. Venkatesh', '+91 98450 99881', 'No. 42, Wholesale Poultry Market, Bangalore', '21:00', 'lakshmipoultry@okhdfcbank')
+        VALUES (1, 'Chicken Farms Distributors', 'M. Venkatesh', '+91 98450 99881', 'No. 42, Wholesale Poultry Market, Bangalore', '21:00', 'chickenfarms@okhdfcbank')
         ON CONFLICT (id) DO NOTHING;
       `);
 
